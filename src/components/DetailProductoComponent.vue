@@ -117,7 +117,17 @@
 
 <script>
 export default {
-name:'DetailProductoComponent'
+name:'DetailProductoComponent',
+
+data(){
+    return{
+            producto_selecionado:[],
+    }
+},
+created: function() {
+        this.producto_selecionado.push(localStorage.getItem("producto"))
+        console.log(this.producto_selecionado)
+}
 }
 </script>
 

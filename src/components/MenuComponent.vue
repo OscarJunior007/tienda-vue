@@ -15,9 +15,9 @@
             </div>
         </div>
 
-        <a href="index.html" class="absolute left-1/2 transform -translate-x-1/2">
+        <a class="absolute left-1/2 transform -translate-x-1/2">
             <div class="flex flex-col items-center">
-                <img src="logo.png" alt="PURE ESSENCE" class="h-10 object-contain">
+                <h1 style="font-size: 40px;   font-family: 'OldSchool'; letter-spacing: 5px; cursor: pointer;"><b> Urban Essence</b></h1>
             </div>
         </a>
 
