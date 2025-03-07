@@ -13,7 +13,7 @@
             <!-- Product 1 -->
             <div class="bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden group" v-for="producto in perfumes" :key="producto.id">
                 <div class="relative h-64 overflow-hidden">
-                    <RouterLink to="/producto"> <img :src="producto.imagen1" :alt="producto.nombre" class="w-full h-full object-cover group-hover:scale-105 transition duration-300"> </RouterLink> 
+                     <img :src="producto.imagen1" :alt="producto.nombre" class="w-full h-full object-cover group-hover:scale-105 transition duration-300"> 
                 </div>
 
                 <div class="p-4">
@@ -21,9 +21,9 @@
                     <p class="text-zinc-400 text-sm">{{producto.minidescripcion}}</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="font-bold">$ {{producto.precio}}</span>
-                        <button class="bg-amber-700 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded text-sm" @click="getProducts(producto)">
+                        <RouterLink to="/producto">  <button class="bg-amber-700 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded text-sm" @click="getProducts(producto)">
                             Añadir
-                        </button>
+                        </button> </RouterLink>
                     </div>
                 </div>
             </div>
@@ -143,7 +143,10 @@ gorras:  [
 },
 methods: {
     getProducts(producto) {
-        localStorage.setItem("producto",producto)
+        console.log(producto)
+        let objetoJson = JSON.stringify(producto)
+        console.log("Esto es el objeto",objetoJson)
+        localStorage.setItem("producto",objetoJson)
     }
 }
 }

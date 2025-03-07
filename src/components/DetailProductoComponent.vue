@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- Product Detail -->
-    <section class="container mx-auto px-4 py-8">
+    <section class="container mx-auto px-4 py-8" v-for="producto in producto_selecionado" :key="producto.id" >
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             <!-- Product Images -->
             <div class="space-y-4">
                 <div class="bg-zinc-900 rounded-lg overflow-hidden">
-                    <img src="product-detail.jpg" alt="BLEU CHANEL" class="w-full h-auto">
+                    <img :src="producto.imagen1" :alt="producto.nombre" class="w-full h-auto">
                 </div>
                 <div class="grid grid-cols-4 gap-2">
                     <div class="bg-zinc-900 rounded-lg overflow-hidden">
@@ -25,10 +25,10 @@
             </div>
 
             <!-- Product Info -->
-            <div class="space-y-6">
+            <div class="space-y-6" >
                 <div>
-                    <h1 class="text-3xl font-bold">BLEU CHANEL</h1>
-                    <p class="text-zinc-400">Eau de Parfum</p>
+                    <h1 class="text-3xl font-bold">{{ producto.nombre }}</h1>
+                    <p class="text-zinc-400">{{ producto.minidescripcion }}</p>
                 </div>
 
                 <div class="flex items-center gap-2">
@@ -52,7 +52,7 @@
                     <span class="text-sm text-zinc-400">(42 reseñas)</span>
                 </div>
 
-                <div class="text-2xl font-bold">$120.00</div>
+                <div class="text-2xl font-bold">${{producto.precio}}</div>
 
                 <div class="space-y-4">
                     <div>
@@ -103,9 +103,7 @@
                     </div>
                     <div class="py-4">
                         <p class="text-zinc-300">
-                            BLEU CHANEL es una fragancia aromática-amaderada para hombre que combina frescura y sofisticación.
-                            Con notas cítricas en la salida, un corazón especiado y una base amaderada, esta fragancia
-                            representa la libertad y elegancia del hombre moderno.
+                            {{ producto.descripcion }}
                         </p>
                     </div>
                 </div>
@@ -122,11 +120,14 @@ name:'DetailProductoComponent',
 data(){
     return{
             producto_selecionado:[],
+            
     }
 },
 created: function() {
-        this.producto_selecionado.push(localStorage.getItem("producto"))
-        console.log(this.producto_selecionado)
+       let producto = localStorage.getItem("producto")
+       let objeto = JSON.parse(producto)
+       this.producto_selecionado.push(objeto)
+       console.log("este es el producto",this.producto_selecionado)
 }
 }
 </script>
