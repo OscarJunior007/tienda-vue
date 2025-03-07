@@ -1,7 +1,13 @@
 <template>
   <div>
+
+    
     <!-- Product Detail -->
     <section class="container mx-auto px-4 py-8" v-for="producto in producto_selecionado" :key="producto.id" >
+
+        
+      
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             <!-- Product Images -->
             <div class="space-y-4">
@@ -123,6 +129,7 @@ data(){
             
     }
 },
+
 created: function() {
        let producto = localStorage.getItem("producto")
        let objeto = JSON.parse(producto)
